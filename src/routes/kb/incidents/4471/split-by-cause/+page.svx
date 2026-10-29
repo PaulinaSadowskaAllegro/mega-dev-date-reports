@@ -31,7 +31,7 @@ from their tenant and entry path; they do not form another problem.
 
 ## Resolution
 
-The desk completed its work on #4471 after these tickets were filed. This page records the
-final split and closes the delivery tickets with the knowledge-base update.
+Engineering closed #4471 on 5 October. The shared parser was fixed to parse day-first dates
+for European locales. The booking-v3 hint will not be fixed because that form was retired.
 
 <RenderStamp {signature} />

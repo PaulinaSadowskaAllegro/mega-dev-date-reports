@@ -8,14 +8,18 @@
   const merged = uniqueById(exported).filter((r) => r.mergedInto === ticket);
   const groups = groupByCause(merged, tenantOf);
 
-  const issues: Record<Cause, { title: string; url: string }> = {
+  const issues: Record<Cause, { title: string; url: string; outcome: string; update: string }> = {
     parser: {
       title: 'Shared parser reads day-first dates as month-first',
       url: 'https://github.com/PaulinaSadowskaAllegro/mega-dev-date-reports/issues/1',
+      outcome: 'fixed',
+      update: 'fix(dates): parse dd/mm for eu locales',
     },
     hint: {
       title: 'booking-v3 date hint conflicts with day-first locales',
       url: 'https://github.com/PaulinaSadowskaAllegro/mega-dev-date-reports/issues/2',
+      outcome: "won't fix",
+      update: 'booking-v3 form retired',
     },
   };
 
@@ -34,7 +38,7 @@
 
 <table>
   <thead>
-    <tr><th>problem</th><th>reports</th><th>tenants</th><th>intake tagged as</th></tr>
+    <tr><th>problem</th><th>reports</th><th>tenants</th><th>intake tagged as</th><th>outcome</th></tr>
   </thead>
   <tbody>
     {#each groups as group (group.cause)}
@@ -46,6 +50,7 @@
         <td>{group.reports.length}</td>
         <td>{group.tenants}</td>
         <td class="tags">{tags(group.taggedAs)}</td>
+        <td>{#if issue}<strong>{issue.outcome}</strong><br /><span class="update">{issue.update}</span>{/if}</td>
       </tr>
     {/each}
   </tbody>
@@ -54,4 +59,5 @@
 <style>
   .sum { font-size: 1.1rem; }
   .tags { color: var(--muted); font-size: 0.85em; }
+  .update { color: var(--muted); font-size: 0.85em; }
 </style>
