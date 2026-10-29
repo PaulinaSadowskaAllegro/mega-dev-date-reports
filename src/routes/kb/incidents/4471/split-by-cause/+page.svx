@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · split by cause'
 owner: PaulinaSadowskaAllegro
-status: filed
+status: resolved
 reviewed: 2026-10-29
 signature: PaulinaSadowskaAllegro
 ---
@@ -12,8 +12,8 @@ signature: PaulinaSadowskaAllegro
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-[#4471](/kb/incidents/4471) was marked as one known parser issue. The exported reports show
-two failures that need separate engineering tickets.
+[#4471](/kb/incidents/4471) was marked as one known parser issue. The exported reports showed
+two failures, so the desk tracked them separately.
 
 ## How the reports were split
 
@@ -28,5 +28,10 @@ from their tenant and entry path; they do not form another problem.
 ## Filed problems
 
 <IssueSplit />
+
+## Resolution
+
+The desk completed its work on #4471 after these tickets were filed. This page records the
+final split and closes the delivery tickets with the knowledge-base update.
 
 <RenderStamp {signature} />
