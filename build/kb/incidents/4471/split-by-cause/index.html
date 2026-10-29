@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>#4471 · split by cause · Support knowledge base</title>
+    <style>
+      :root { color-scheme: light dark; font-family: system-ui, sans-serif; line-height: 1.5; }
+      body { max-width: 72rem; margin: 0 auto; padding: 2rem; }
+      header, .meta, .stamp, .muted { color: #68707c; }
+      h1, h2 { line-height: 1.2; }
+      table { border-collapse: collapse; width: 100%; margin: 1rem 0 2rem; }
+      th, td { border: 1px solid #89919d; padding: 0.65rem; text-align: left; vertical-align: top; }
+      th { background: color-mix(in srgb, currentColor 8%, transparent); }
+      code, .stamp { font-family: ui-monospace, monospace; }
+      .sum { font-size: 1.1rem; }
+      .stamp { margin-top: 2rem; }
+    </style>
+  </head>
+  <body>
+    <header>Support knowledge base</header>
+    <main>
+      <h1>#4471 · split by cause</h1>
+      <p class="meta">Owner: PaulinaSadowskaAllegro · Status: resolved · Reviewed: 2026-10-29</p>
+
+      <p><a href="/kb/incidents/4471">#4471</a> was marked as one known parser issue. The exported reports showed two failures, so the desk tracked them separately.</p>
+
+      <h2>How the reports were split</h2>
+      <ol>
+        <li>Deduplicate the overlapping export pages by report ID.</li>
+        <li>Read date order from the tenant locale, not the browser-based intake tag.</li>
+        <li>Put booking-v3 form reports under the conflicting date hint. Put the remaining day-first tenant reports under the shared parser.</li>
+      </ol>
+      <p>The desk notes that some reports looked like one-day moves. They remain with the cause found from their tenant and entry path; they do not form another problem.</p>
+
+      <h2>Filed problems</h2>
+      <p class="sum"><strong>427</strong> exported rows · <strong>15</strong> repeated rows removed · <strong>412</strong> unique reports</p>
+      <table>
+        <thead>
+          <tr><th>problem</th><th>reports</th><th>tenants</th><th>intake tagged as</th><th>outcome</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://github.com/PaulinaSadowskaAllegro/mega-dev-date-reports/issues/1">Shared parser reads day-first dates as month-first</a></td>
+            <td>379</td><td>11</td><td class="muted">parser ×356 · hint ×23</td>
+            <td><strong>fixed</strong><br /><span class="muted">fix(dates): parse dd/mm for eu locales</span></td>
+          </tr>
+          <tr>
+            <td><a href="https://github.com/PaulinaSadowskaAllegro/mega-dev-date-reports/issues/2">booking-v3 date hint conflicts with day-first locales</a></td>
+            <td>33</td><td>3</td><td class="muted">hint ×18 · parser ×15</td>
+            <td><strong>won't fix</strong><br /><span class="muted">booking-v3 form retired</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Resolution</h2>
+      <p>Engineering closed #4471 on 5 October. The shared parser was fixed to parse day-first dates for European locales. The booking-v3 hint will not be fixed because that form was retired.</p>
+
+      <p class="stamp">desk ref <strong>DR-8PHD-F8D5</strong></p>
+    </main>
+  </body>
+</html>
