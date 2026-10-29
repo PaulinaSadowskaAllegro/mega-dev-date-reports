@@ -1,0 +1,32 @@
+---
+layout: runbook
+title: '#4471 · split by cause'
+owner: PaulinaSadowskaAllegro
+status: filed
+reviewed: 2026-10-29
+signature: PaulinaSadowskaAllegro
+---
+
+<script>
+  import IssueSplit from '#lib/kb/IssueSplit.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was marked as one known parser issue. The exported reports show
+two failures that need separate engineering tickets.
+
+## How the reports were split
+
+1. Deduplicate the overlapping export pages by report ID.
+2. Read date order from the tenant locale, not the browser-based intake tag.
+3. Put booking-v3 form reports under the conflicting date hint. Put the remaining day-first
+   tenant reports under the shared parser.
+
+The desk notes that some reports looked like one-day moves. They remain with the cause found
+from their tenant and entry path; they do not form another problem.
+
+## Filed problems
+
+<IssueSplit />
+
+<RenderStamp {signature} />
